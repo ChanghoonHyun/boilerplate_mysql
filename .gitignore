@@ -1,0 +1,7 @@
+/.idea
+/_provisioning/.vagrant
+/_provisioning/configuration/root/.ssh/id_rsa
+__pycache__
+*~
+.DS_Store
+config.json

@@ -1,0 +1,52 @@
+- name: Install mysql57-devel
+  package:
+    name:
+      - mysql57-devel-5.7.26-1.12.amzn1
+      - mysql57-server-5.7.26-1.12.amzn1
+    state: present
+    lock_timeout: 180
+
+- name: Replace my.cnf
+  template:
+    src: my.cnf.j2
+    dest: "/etc/my.cnf"
+    owner: root
+    group: root
+    mode: 644
+
+- name: Create log directory
+  file:
+    path: "{{item}}"
+    state: directory
+    owner: mysql
+    group: mysql
+    mode: 0755
+  with_items:
+    - "{{ mysql_log_dir }}"
+
+- name: Settings for a instance
+  shell: |
+    fallocate -l 2G /swapfile
+    chmod 600 /swapfile
+    mkswap /swapfile
+    swapon /swapfile
+
+- name: Restart mysqld
+  service:
+    name: mysqld
+    state: restarted
+
+- name: Install PyMysql
+  shell: pip install PyMysql
+
+- name: Change root password
+  mysql_user:
+    name: root
+    password: "{{ mysql_root_password}}"
+    check_implicit_admin: true
+    host: "%"
+    priv: "*.*:ALL"
+
+- name: create database
+  raw: mysql -e "CREATE DATABASE {{ mysql_database }} CHARACTER SET utf8;"
+

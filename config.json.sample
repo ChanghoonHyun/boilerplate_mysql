@@ -1,0 +1,15 @@
+{
+  "name": "boilerplate-mysql",
+  "box": "hbsmith/awslinux",
+  "cpu": "1",
+  "memory": "256",
+  "ip": "192.168.10.5",
+  "mysql": {
+    "host": "192.168.10.5",
+    "port": 3306,
+    "log_dir": "/var/log/mysql",
+    "user": "root",
+    "password": "12345678",
+    "database": "boilerplate_mysql"
+  }
+}
