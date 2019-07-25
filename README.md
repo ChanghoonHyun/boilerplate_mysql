@@ -24,10 +24,14 @@ This server uses Vagrant on VirtualBox
 
 ## How to load schema and data
 
-1. Run `./reset_database.py` to load schema and data to database
+1. Run `boilerplate_mysql/ $ ./reset_database.py` to load schema and data to database
 
 ## How to alter schema and data
 
-1. Create a folder under history folder in the format YYYYMMDD
+1. Create a folder under history folder in the format YYYYMMDD for your patch date
 
-2. Write alter query for schema and data  
+1. Write alter query for schema and data
+
+1. Run `boilerplate_mysql/ $ ./alter_database.py`
+
+1. Input your patch date
