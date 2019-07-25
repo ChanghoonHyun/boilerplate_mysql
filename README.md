@@ -24,7 +24,15 @@ This server uses Vagrant on VirtualBox
 
 ## How to load schema and data
 
-1. Run `boilerplate_mysql/ $ ./reset_database.py` to load schema and data to database
+1. Run `boilerplate_mysql/ $ ./reset_database.py`
+
+## How to dump schema
+
+1. Run `boilerplate_mysql/ $ ./mysqldump_schema.py`
+
+## How to dump data
+
+1. Run `boilerplate_mysql/ $ ./mysqldump_data.py`
 
 ## How to alter schema and data
 
