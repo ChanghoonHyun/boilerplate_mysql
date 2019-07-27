@@ -14,6 +14,10 @@ This server uses Vagrant on VirtualBox
 
 1. Move to boilerplate_mysql folder using `$ cd boilerplate_mysql`
 
+1. Copy public key using `boilerplate_mysql $ cp ~/.ssh/id_rsa.pub _provisioning/ansible/roles/ssh/rsa/` or generate public key at _provisioning/ansible/roles/ssh/rsa/
+
+1. Copy rc.local using `boilerplate_mysql $ cp _provisioning/ansible/roles/common_tasks/rc.local.sample _provisioning/ansible/roles/common_tasks/rc.local`  
+
 1. Copy config.json.sample to config.json using `boilerplate_mysql $ cp config.json.sample config.json` 
 
 1. Open `config.json` and edit values

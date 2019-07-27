@@ -1,9 +1,37 @@
 {
-  "name": "boilerplate-mysql",
-  "box": "hbsmith/awslinux",
-  "cpu": "1",
-  "memory": "256",
-  "ip": "192.168.10.5",
+  "vagrant": {
+    "name": "boilerplate-mysql",
+    "box": "hbsmith/awslinux",
+    "cpu": "1",
+    "memory": "256",
+    "ip": "192.168.10.5"
+  },
+  "common_tasks": {
+    "copy_files": {
+      "rc.local": {
+        "dest": "/etc/rc.d/rc.local",
+        "mode": 755,
+        "backup": "yes"
+      }
+    }
+  },
+  "ssh": {
+    "copy_files": {
+      "rsa/id_rsa.pub": {
+        "dest": "/root/.ssh/",
+        "mode": 600,
+        "backup": "yes"
+      },
+      "ssh/sshd_config": {
+        "dest": "/etc/ssh/sshd_config",
+        "mode": 600,
+        "backup": "yes"
+      }
+    },
+    "authorized_keys": [
+      "rsa/id_rsa.pub"
+    ]
+  },
   "mysql": {
     "host": "192.168.10.5",
     "port": 3306,

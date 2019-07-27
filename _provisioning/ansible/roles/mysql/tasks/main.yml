@@ -24,13 +24,6 @@
   with_items:
     - "{{ mysql_log_dir }}"
 
-- name: Settings for a instance
-  shell: |
-    fallocate -l 2G /swapfile
-    chmod 600 /swapfile
-    mkswap /swapfile
-    swapon /swapfile
-
 - name: Restart mysqld
   service:
     name: mysqld

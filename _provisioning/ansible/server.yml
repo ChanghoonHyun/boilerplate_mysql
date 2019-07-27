@@ -4,15 +4,23 @@
   connection: ssh
   gather_facts: no
   pre_tasks:
-    - name: update yum
-      shell: yum -y update
     - include_vars:
         file: ../../config.json
         name: config
   roles:
+    - role: common_tasks
+      vars:
+        copy_files: "{{ config.common_tasks.copy_files }}"
     - role: mysql
       vars:
         mysql_port: "{{ config.mysql.port }}"
         mysql_log_dir: "{{ config.mysql.log_dir }}"
         mysql_root_password: "{{ config.mysql.password }}"
         mysql_database: "{{ config.mysql.database }}"
+    - role: ssh
+      vars:
+        copy_files: "{{ config.ssh.copy_files }}"
+        authorized_keys: "{{ config.ssh.authorized_keys }}"
+  post_tasks:
+    - name: reboot instance
+      shell: reboot
